@@ -4,7 +4,7 @@
 #include <StaticConstants.au3>
 
 
-MsgBox($MB_ICONINFORMATION, "Initial M Unity Assests Setup tools", "Please run this program after you have installed and setup the Google drive. ")
+;MsgBox($MB_ICONINFORMATION, "Initial M Unity Assests Setup tools", "Please run this program after you have installed and setup the Google drive. ")
 
 GUICreate("Initial M Game Project Unity Assests Setup Tools", 400, 360)
 GUISetIcon(@SystemDir & "\mmc.exe", 0)
@@ -60,13 +60,11 @@ While 1
 
 		 Case $idConnect
 			;MsgBox($MB_OK,"test", 'mklink /j "'& $UnityAssetsFolder &'\Folder1" "'& $GoogleAssetsFolder & '\Folder1"')
-			Local $CommandLine = 'mklink /j "'& $UnityAssetsFolder &'\AnimationControler" "'& $GoogleAssetsFolder & '\AnimationControler" && ' & _
-								 'mklink /j "'& $UnityAssetsFolder &'\Animations" "'& $GoogleAssetsFolder & '\Animations" && ' & _
+			Local $CommandLine = 'mklink /j "'& $UnityAssetsFolder &'\Animations" "'& $GoogleAssetsFolder & '\Animations" && ' & _
 								 'mklink /j "'& $UnityAssetsFolder &'\Audio" "'& $GoogleAssetsFolder & '\Audio" && ' & _
-								 'mklink /j "'& $UnityAssetsFolder &'\Completed" "'& $GoogleAssetsFolder & '\Completed" && ' & _
+								 'mklink /j "'& $UnityAssetsFolder &'\Scripts" "'& $GoogleAssetsFolder & '\Completed" && ' & _
 								 'mklink /j "'& $UnityAssetsFolder &'\Fonts" "'& $GoogleAssetsFolder & '\Fonts" && ' & _
-								 'mklink /j "'& $UnityAssetsFolder &'\New scene" "'& $GoogleAssetsFolder & '\New scene" && ' & _
-								 'mklink /j "'& $UnityAssetsFolder &'\Prefabs" "'& $GoogleAssetsFolder & '\Prefabs" && ' & _
+								 'mklink /j "'& $UnityAssetsFolder &'\UI" "'& $GoogleAssetsFolder & '\New scene" && ' & _
 								 'mklink /j "'& $UnityAssetsFolder &'\Sprites" "'& $GoogleAssetsFolder & '\Sprites" && ' & _
 								 'pause'
 			RunWait('"'&@ComSpec&'" /c ' & $CommandLine)
