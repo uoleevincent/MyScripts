@@ -62,15 +62,17 @@ While 1
 			;MsgBox($MB_OK,"test", 'mklink /j "'& $UnityAssetsFolder &'\Folder1" "'& $GoogleAssetsFolder & '\Folder1"')
 			Local $CommandLine = 'mklink /j "'& $UnityAssetsFolder &'\Animations" "'& $GoogleAssetsFolder & '\Animations" && ' & _
 								 'mklink /j "'& $UnityAssetsFolder &'\Audio" "'& $GoogleAssetsFolder & '\Audio" && ' & _
-								 'mklink /j "'& $UnityAssetsFolder &'\Scripts" "'& $GoogleAssetsFolder & '\Completed" && ' & _
 								 'mklink /j "'& $UnityAssetsFolder &'\Fonts" "'& $GoogleAssetsFolder & '\Fonts" && ' & _
-								 'mklink /j "'& $UnityAssetsFolder &'\UI" "'& $GoogleAssetsFolder & '\New scene" && ' & _
+								 'mklink /j "'& $UnityAssetsFolder &'\UI" "'& $GoogleAssetsFolder & '\UI" && ' & _
 								 'mklink /j "'& $UnityAssetsFolder &'\Sprites" "'& $GoogleAssetsFolder & '\Sprites" && ' & _
 								 'pause'
 			RunWait('"'&@ComSpec&'" /c ' & $CommandLine)
 		 Case $idDisconnect
-			Local $CommandLine = 'rd "' & $UnityAssetsFolder2 & '\Folder1" && ' & _
-								 'rd "' & $UnityAssetsFolder2 & '\Folder2" && ' & _
+			Local $CommandLine = 'rd "' & $UnityAssetsFolder2 & '\Animations" && ' & _
+								 'rd "' & $UnityAssetsFolder2 & '\Audio" && ' & _
+								 'rd "' & $UnityAssetsFolder2 & '\Fonts" && ' & _
+								 'rd "' & $UnityAssetsFolder2 & '\UI" && ' & _
+								 'rd "' & $UnityAssetsFolder2 & '\Sprites" && ' & _
 								 'Echo Connection removed. && ' & _
 								 'pause'
 			RunWait('"'&@ComSpec&'" /c ' & $CommandLine)
