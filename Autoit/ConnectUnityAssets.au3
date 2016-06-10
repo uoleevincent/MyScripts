@@ -2,7 +2,7 @@
 #include <GuiConstantsEx.au3>
 #include <GuiButton.au3>
 #include <StaticConstants.au3>
-
+;Version 1.0.1
 
 ;MsgBox($MB_ICONINFORMATION, "Initial M Unity Assests Setup tools", "Please run this program after you have installed and setup the Google drive. ")
 
@@ -60,12 +60,17 @@ While 1
 
 		 Case $idConnect
 			;MsgBox($MB_OK,"test", 'mklink /j "'& $UnityAssetsFolder &'\Folder1" "'& $GoogleAssetsFolder & '\Folder1"')
-			Local $CommandLine = 'mklink /j "'& $UnityAssetsFolder &'\Animations" "'& $GoogleAssetsFolder & '\Animations" && ' & _
-								 'mklink /j "'& $UnityAssetsFolder &'\Audio" "'& $GoogleAssetsFolder & '\Audio" && ' & _
-								 'mklink /j "'& $UnityAssetsFolder &'\Fonts" "'& $GoogleAssetsFolder & '\Fonts" && ' & _
-								 'mklink /j "'& $UnityAssetsFolder &'\UI" "'& $GoogleAssetsFolder & '\UI" && ' & _
-								 'mklink /j "'& $UnityAssetsFolder &'\Sprites" "'& $GoogleAssetsFolder & '\Sprites" && ' & _
-								 'pause'
+			Local $CommandLine = StringLeft($GoogleAssetsFolder,2) & ' && ' & _
+								 'cd ' & $GoogleAssetsFolder & ' && ' & _
+								 'for /d %i in ("*") do mklink /j "' & $UnityAssetsFolder & '\%i" "' & $GoogleAssetsFolder & '\%i"'
+								 ;'mklink /j "'& $UnityAssetsFolder &'\Animations" "'& $GoogleAssetsFolder & '\Animations" && ' & _
+								 ;'mklink /j "'& $UnityAssetsFolder &'\Audio" "'& $GoogleAssetsFolder & '\Audio" && ' & _
+								 ;'mklink /j "'& $UnityAssetsFolder &'\Fonts" "'& $GoogleAssetsFolder & '\Fonts" && ' & _
+								 ;'mklink /j "'& $UnityAssetsFolder &'\UI" "'& $GoogleAssetsFolder & '\UI" && ' & _
+								 ;'mklink /j "'& $UnityAssetsFolder &'\Sprites" "'& $GoogleAssetsFolder & '\Sprites" && ' & _
+								 ;'pause'
+			RunWait('"'&@ComSpec&'" /c ' & $CommandLine)
+			Local $CommandLine = 'explorer "' & $UnityAssetsFolder & '"'
 			RunWait('"'&@ComSpec&'" /c ' & $CommandLine)
 		 Case $idDisconnect
 			Local $CommandLine = 'rd "' & $UnityAssetsFolder2 & '\Animations" && ' & _
